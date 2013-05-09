@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('#palette_id').on 'change', ->
+    palette_id = $(this).val()
+    uri = 'http://www.colourlovers.com/api/palette/' + palette_id +
+          '?format=json&jsonCallback=?'
+    $.getJSON uri, (results) ->
+      hex_codes = results[0].colors
+      index = 1
+      for hex_code in hex_codes
+        console.log hex_code
+        $('#color' + index).css('background-color', '#' + hex_code)
+        index++
