@@ -1,10 +1,18 @@
+%p
+  Enter a palette ID for a palette on
+  = link_to 'ColourLovers.com', 'http://www.colourlovers.com'
+  to see its colors.
+%hr
 %form.form-horizontal
   .control-group
     %label.control-label{for: 'palette_id'}
       Palette ID:
     .controls
       = text_field_tag 'palette_id'
-
+      %span.help-inline
+        e.g., 2842573 for
+        = link_to 'Spring Training', 'http://www.colourlovers.com/palette/2842573/Spring_Training?sAC=1'
+%hr
 .row-fluid
   .span2.offset1
     #color1.color-swatch

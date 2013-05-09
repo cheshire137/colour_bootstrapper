@@ -7,6 +7,5 @@ $ ->
       hex_codes = results[0].colors
       index = 1
       for hex_code in hex_codes
-        console.log hex_code
         $('#color' + index).css('background-color', '#' + hex_code)
         index++
