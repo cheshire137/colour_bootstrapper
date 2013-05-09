@@ -6,7 +6,9 @@ class ColorController < ApplicationController
   end
 
   def compile_less
-    hex_codes = params[:colors].split(',')
+    hex_codes = (params[:colors] || '').split(',').select do |hex_code|
+      hex_code =~ /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
+    end
     path = File.join(Rails.root, 'vendor', 'assets', 'stylesheets')
     parser = Less::Parser.new(paths: [path])
     less = File.read(File.join(path, 'variables.less'))
